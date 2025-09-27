@@ -1,0 +1,153 @@
+:root{
+  --bg: #0f172a; /* deep navy */
+  --muted: #94a3b8;
+  --accent: #ff7a18; /* orange */
+  --accent-2: #2563eb; /* blue */
+  --surface: #f8fafc;
+}
+
+*{box-sizing:border-box}
+html,body,#root{height:100%}
+body{
+  margin:0;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background: linear-gradient(180deg,#f8fafc 0%, #eef2ff 100%);
+  color: #0b1220;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+.page{display:flex;flex-direction:column;min-height:100vh}
+
+/* Page background: currently uses a placeholder image from Unsplash. */
+/* To use your own background, place your image at: public/background.jpg
+   and replace the URL below to: url('/background.jpg') */
+.page::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background-image: url('https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1400&q=60');
+  background-size:cover;
+  background-position:center center;
+  filter:contrast(0.95) saturate(1.05) blur(0.0px);
+  z-index:-2;
+}
+
+/* subtle dark overlay to increase contrast for text */
+.page::after{
+  content:'';
+  position:fixed;
+  inset:0;
+  background:linear-gradient(180deg, rgba(6,10,20,0.55) 0%, rgba(6,10,20,0.55) 100%);
+  z-index:-1;
+}
+
+.site-header{display:flex;align-items:center;justify-content:space-between;padding:0.85rem 1rem;max-width:1100px;margin:0 auto;width:100%;position:relative}
+
+/* Make header clearly readable over busy backgrounds */
+.site-header{
+  background: rgba(6,10,20,0.64); /* dark translucent panel */
+  color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(2,6,23,0.45);
+  backdrop-filter: blur(6px) saturate(120%);
+  -webkit-backdrop-filter: blur(6px) saturate(120%);
+  z-index: 80;
+}
+.header-actions{display:flex;align-items:center;gap:0.75rem}
+.brand{display:flex;gap:0.75rem;align-items:center}
+.brand .logo{width:56px;height:56px;border-radius:8px;object-fit:contain}
+.brand-title{font-weight:700;font-size:1.125rem;color:#fff}
+.brand-sub{font-size:0.85rem;color:rgba(255,255,255,0.85)}
+
+.cta-phone{background:linear-gradient(90deg,var(--accent-2),#1f6adf);color:#fff;padding:0.5rem 0.9rem;border-radius:10px;text-decoration:none;font-weight:700;box-shadow:0 8px 24px rgba(37,99,235,0.18);transition:transform .16s ease}
+.cta-phone:hover{transform:translateY(-3px)}
+
+.social-link{color:#fff;background:linear-gradient(90deg,var(--accent-2),var(--accent));padding:0.45rem 0.7rem;border-radius:10px;text-decoration:none;font-weight:700;box-shadow:0 8px 24px rgba(37,99,235,0.12);transition:transform .16s ease}
+.social-link:hover{transform:translateY(-3px)}
+
+.hero{display:grid;grid-template-columns:1fr 320px;gap:2rem;align-items:center;padding:3rem 1.25rem;max-width:1100px;margin:0 auto;width:100%;position:relative}
+.hero-content h1{font-size:2.35rem;margin:0 0 0.5rem 0;line-height:1.02;background:linear-gradient(90deg,var(--accent-2),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--muted);margin:0 0 1rem;max-width:58ch}
+.hero-ctas{display:flex;gap:0.75rem}
+.hero-illustration img{width:100%;max-width:280px;display:block;margin-left:auto;border-radius:12px;filter:drop-shadow(0 8px 24px rgba(37,99,235,0.08))}
+
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;padding:2rem 1.25rem;max-width:1100px;margin:0 auto;width:100%}
+.feature{background:linear-gradient(180deg,#ffffff 0%, #fbfdff 100%);padding:1.5rem;border-radius:16px;box-shadow:0 12px 30px rgba(37,99,235,0.08);text-align:left;transition:transform .22s cubic-bezier(.2,.9,.3,1), box-shadow .22s ease}
+.feature:hover{transform:translateY(-8px);box-shadow:0 22px 40px rgba(37,99,235,0.12)}
+.feature-emoji{font-size:1.5rem;margin-bottom:0.5rem}
+.feature h3{margin:0 0 0.25rem 0}
+.feature p{margin:0;color:var(--muted)}
+
+.contact-strip{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;padding:1.25rem;border-radius:12px;margin:1.25rem;max-width:1100px;margin-left:auto;margin-right:auto;display:flex;align-items:center;justify-content:space-between}
+.contact-strip .contact-actions{display:flex;gap:0.75rem;margin-top:0.5rem}
+.contact-strip strong{font-size:1.05rem}
+
+.site-footer{padding:1.25rem;text-align:center;color:var(--muted);margin-top:auto}
+.site-footer a{color:inherit;text-decoration:underline}
+
+.button{display:inline-flex;align-items:center;gap:0.5rem;padding:0.6rem 1rem;border-radius:10px;text-decoration:none;font-weight:600}
+.button.primary{background:linear-gradient(90deg,var(--bg),#0b1220);color:#fff;box-shadow:0 10px 30px rgba(15,23,42,0.08)}
+.button.ghost{background:rgba(255,255,255,0.95);border:1px solid rgba(11,18,32,0.04);color:var(--bg)}
+
+/* Floating Instagram button */
+.floating-ig{position:fixed;right:18px;bottom:18px;background:linear-gradient(45deg,#f58529,#dd2a7b);width:56px;height:56px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;color:#fff;box-shadow:0 18px 40px rgba(37,99,235,0.18);text-decoration:none;z-index:60;transform:translateY(0);transition:transform .18s ease, box-shadow .18s ease}
+.floating-ig:hover{transform:translateY(-6px);box-shadow:0 30px 50px rgba(37,99,235,0.2)}
+.floating-ig svg{display:block}
+
+@media (max-width:900px){
+  .hero{grid-template-columns:1fr;gap:1rem;padding:2rem 1rem}
+  .hero-illustration{order:-1;text-align:center}
+  .features{grid-template-columns:1fr;gap:0.75rem;padding:1rem}
+  .contact-strip{margin:1rem}
+  .floating-ig{right:12px;bottom:12px;width:48px;height:48px}
+}
+
+/* Why choose section */
+.why-choose{padding:2rem 1.25rem;max-width:1100px;margin:0 auto}
+.why-inner{background:linear-gradient(90deg, rgba(37,99,235,0.06), rgba(255,122,24,0.03));padding:1.25rem;border-radius:12px}
+.why-inner h2{margin:0 0 0.5rem}
+
+/* Section headings: use the same multicolor gradient as the hero headline */
+h2, .section-title{
+  font-size:1.4rem;
+  margin:0 0 0.5rem;
+  background:linear-gradient(90deg,var(--accent-2),var(--accent));
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  text-shadow: 0 2px 8px rgba(6,10,20,0.45);
+}
+
+/* Provide a readable solid fallback for very small screens */
+@media (max-width:420px){
+  h2, .section-title{color:#fff;background:none;text-shadow:none}
+}
+.why-lead{color:var(--muted);margin:0 0 1rem}
+.badges{display:flex;flex-wrap:wrap;gap:0.5rem}
+.badge{background:#fff;padding:0.5rem 0.75rem;border-radius:999px;font-weight:700;box-shadow:0 8px 20px rgba(11,18,32,0.04)}
+
+/* Testimonials */
+.testimonials{padding:2rem 1.25rem;max-width:900px;margin:0 auto}
+.testimonials h2{text-align:center;margin-bottom:1rem}
+.test-list{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.test{background:#fff;padding:1rem;border-radius:12px;box-shadow:0 8px 24px rgba(11,18,32,0.04);font-style:normal}
+.test cite{display:block;margin-top:0.75rem;color:var(--muted);font-size:0.9rem}
+
+.quote{padding:2rem 1.25rem;max-width:900px;margin:0 auto}
+.quote h2{text-align:center;margin-bottom:0.75rem}
+.quote-form{background:#fff;padding:1rem;border-radius:12px;box-shadow:0 10px 30px rgba(11,18,32,0.06)}
+.quote-form .row{display:flex;gap:0.5rem;margin-bottom:0.5rem}
+.quote-form input,.quote-form textarea{flex:1;padding:0.6rem;border-radius:8px;border:1px solid rgba(11,18,32,0.06);font-size:0.95rem}
+.quote-form textarea{min-height:100px;resize:vertical}
+
+/* Prevent logo alt text showing as visible 'logo' text if image missing */
+.brand .logo{background:linear-gradient(90deg,var(--accent-2),var(--accent));display:inline-block}
+.brand .logo[alt=""]{background-size:cover}
+
+@media (max-width:900px){
+  .test-list{grid-template-columns:1fr}
+  .badges{justify-content:center}
+  .quote-form .row{flex-direction:column}
+}
+
